@@ -15,20 +15,30 @@ class BasicoPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              _crearImagen(screenSize),
-              _crearTitulo(),
-              _crearAcciones(context),
-              _crearTexto(),
-              _crearTexto(),
-              _crearTexto(),
+              _CrearImagen(screenSize: screenSize),
+              _CrearTitulo(estiloTitulo: _estiloTitulo, estiloSubTitulo: _estiloSubTitulo),
+              _CrearAcciones(context: context),
+              _CrearTexto(),
+              _CrearTexto(),
+              _CrearTexto(),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  Widget _crearImagen(Size screenSize) {
+class _CrearImagen extends StatelessWidget {
+  const _CrearImagen({
+    Key? key,
+    required this.screenSize,
+  }) : super(key: key);
+
+  final Size screenSize;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: screenSize.height * 0.4,
@@ -48,8 +58,20 @@ class BasicoPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _crearTitulo() {
+class _CrearTitulo extends StatelessWidget {
+  const _CrearTitulo({
+    Key? key,
+    required this.estiloTitulo,
+    required this.estiloSubTitulo,
+  }) : super(key: key);
+
+  final TextStyle estiloTitulo;
+  final TextStyle estiloSubTitulo;
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 5.0),
@@ -59,9 +81,9 @@ class BasicoPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Lago con un puente', style: _estiloTitulo),
+                  Text('Lago con un puente', style: estiloTitulo),
                   SizedBox(height: 7.0),
-                  Text('Un lago en Alemania', style: _estiloSubTitulo),
+                  Text('Un lago en Alemania', style: estiloSubTitulo),
                 ],
               ),
             ),
@@ -79,8 +101,18 @@ class BasicoPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _crearAcciones(BuildContext context) {
+class _CrearAcciones extends StatelessWidget {
+  const _CrearAcciones({
+    Key? key,
+    required this.context,
+  }) : super(key: key);
+
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -119,8 +151,15 @@ class BasicoPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _crearTexto() {
+class _CrearTexto extends StatelessWidget {
+  const _CrearTexto({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40.0),

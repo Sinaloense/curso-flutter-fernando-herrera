@@ -12,41 +12,77 @@ class ScrollPage extends StatelessWidget {
         controller: _controladorPagina,
         scrollDirection: Axis.vertical,
         children: <Widget>[
-          _pagina1(),
-          _pagina2(context),
+          _Pagina1(controladorPagina: _controladorPagina),
+          _Pagina2(controladorPagina: _controladorPagina, context: context),
         ],
       ),
     );
   }
+}
 
-  Widget _pagina1() {
+class _Pagina1 extends StatelessWidget {
+  const _Pagina1({
+    Key? key,
+    required this.controladorPagina,
+  }) : super(key: key);
+
+  final PageController controladorPagina;
+
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        _colorFondo(),
-        _imagenFondo(),
-        _textos(),
+        _ColorFondo(),
+        _ImagenFondo(),
+        _Textos(controladorPagina: controladorPagina),
       ],
     );
   }
+}
 
-  Widget _pagina2(BuildContext context) {
+class _Pagina2 extends StatelessWidget {
+  const _Pagina2({
+    Key? key,
+    required this.controladorPagina,
+    required this.context,
+  }) : super(key: key);
+
+  final PageController controladorPagina;
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        _colorFondo(),
-        _botonBienvenida(context),
+        _ColorFondo(),
+        _BotonBienvenida(controladorPagina: controladorPagina, context: context),
       ],
     );
   }
+}
 
-  Widget _colorFondo() {
+class _ColorFondo extends StatelessWidget {
+  const _ColorFondo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: double.infinity,
       color: Color.fromRGBO(80, 194, 221, 1.0),
     );
   }
+}
 
-  Widget _imagenFondo() {
+class _ImagenFondo extends StatelessWidget {
+  const _ImagenFondo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -56,8 +92,18 @@ class ScrollPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _textos() {
+class _Textos extends StatelessWidget {
+  const _Textos({
+    Key? key,
+    required this.controladorPagina,
+  }) :  super(key: key);
+
+  final PageController controladorPagina;
+
+  @override
+  Widget build(BuildContext context) {
     final estiloTexto = TextStyle(color: Colors.white, fontSize: 50.0);
 
     return SafeArea(
@@ -69,7 +115,7 @@ class ScrollPage extends StatelessWidget {
           Expanded(child: Container()),
           InkWell(
             onTap: () {
-              _controladorPagina.animateToPage(
+              controladorPagina.animateToPage(
                 1,
                 curve: Curves.linear,
                 duration: Duration(milliseconds: 300),
@@ -85,15 +131,27 @@ class ScrollPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _botonBienvenida(BuildContext context) {
+class _BotonBienvenida extends StatelessWidget {
+  const _BotonBienvenida({
+    Key? key,
+    required this.controladorPagina,
+    required this.context,
+  }) : super(key: key);
+
+  final PageController controladorPagina;
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: <Widget>[
           SafeArea(
             child: InkWell(
               onTap: () {
-                _controladorPagina.animateToPage(
+                controladorPagina.animateToPage(
                 0,
                 curve: Curves.linear,
                 duration: Duration(milliseconds: 300),
@@ -111,10 +169,12 @@ class ScrollPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                RaisedButton(
-                  shape: StadiumBorder(),
-                  color: Colors.blue,
-                  textColor: Colors.white,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    primary: Colors.blue,
+                    onPrimary: Colors.white,
+                  ),
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
                     child: Text(

@@ -4,29 +4,37 @@ import 'dart:math';
 import 'dart:ui';
 
 class BotonesPage extends StatelessWidget {
-  const BotonesPage({Key key}) : super(key: key);
+  const BotonesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          _fondoApp(),
+          _FondoApp(),
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                _titulos(),
-                _botonesRedondeados(),
+                _Titulos(),
+                _BotonesRedondeados(),
               ],
             ),
           ),
         ],
       ),
-      bottomNavigationBar: _bottomNavigationBar(context),
+      bottomNavigationBar: _BottomNavigationBar(context: context),
+      backgroundColor: Colors.pinkAccent,
     );
   }
+}
 
-  Widget _fondoApp() {
+class _FondoApp extends StatelessWidget {
+  const _FondoApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     final gradiente = Container(
       width: double.infinity,
       height: double.infinity,
@@ -70,8 +78,15 @@ class BotonesPage extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _titulos() {
+class _Titulos extends StatelessWidget {
+  const _Titulos({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
         padding: EdgeInsets.only(left: 20.0, top: 10.0, right: 50.0, bottom: 20.0),
@@ -86,8 +101,18 @@ class BotonesPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _bottomNavigationBar(BuildContext context) {
+class _BottomNavigationBar extends StatelessWidget {
+  const _BottomNavigationBar({
+    Key? key,
+    required this.context,
+  }) : super(key: key);
+
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
         canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
@@ -98,23 +123,30 @@ class BotonesPage extends StatelessWidget {
       child: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today, size: 30.0),
-            title: Container()
+            icon: Icon(Icons.calendar_today, size: 25.0, color: Colors.pinkAccent),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.bubble_chart, size: 30.0),
-            title: Container()
+            icon: Icon(Icons.bubble_chart, size: 25.0, color: Colors.pinkAccent),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.supervised_user_circle, size: 30.0),
-            title: Container()
+            icon: Icon(Icons.supervised_user_circle, size: 25.0, color: Colors.pinkAccent),
+            label: '',
           ),
         ]
       ),
     );
   }
+}
 
-  Widget _botonesRedondeados() {
+class _BotonesRedondeados extends StatelessWidget {
+  const _BotonesRedondeados({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Table(
       children: [
         TableRow(children: [
@@ -138,12 +170,12 @@ class BotonesPage extends StatelessWidget {
   }
 
   Widget _crearBotonRedondeado(Color color, IconData icono, String texto) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
+    return Container(
+      margin: EdgeInsets.all(15.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: BackdropFilter(
-          filter: ImageFilter.blur( sigmaX: 10.0,sigmaY: 10.0),
+          filter: ImageFilter.blur( sigmaX: 10.0, sigmaY: 10.0),
           child: Container(
               height: 180.0,
               decoration: BoxDecoration(
