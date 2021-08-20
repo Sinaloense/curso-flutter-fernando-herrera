@@ -1,8 +1,14 @@
 // https://gist.github.com/Klerith/62b00635acec3614d2b35c066df724e6
 
-import 'dart:async';
 // Creditos
 // https://stackoverflow.com/a/52922130/7834829
+
+/*
+  Clase para llamar función "onValue" mediante un timer
+  cada vez que "value" sea modificado.
+*/
+
+import 'dart:async';
 
 class Debouncer<T> {
 
