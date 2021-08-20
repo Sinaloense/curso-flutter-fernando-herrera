@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:provider/provider.dart';
 
-import 'package:peliculas/src/pages/home_page.dart';
-import 'package:peliculas/src/pages/pelicula_detalle.dart';
- 
-void main() => runApp(MyApp());
- 
+import 'package:peliculas/providers/movies_provider.dart';
+import 'package:peliculas/screens/screens.dart';
+
+void main() => runApp(AppState());
+
+class AppState extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => MoviesProvider(), lazy: false),
+        ],
+        child: MyApp(),
+      ),
+    );
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    DefaultCacheManager().emptyCache();
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Películas',
-      initialRoute: '/',
+      title: 'Peliculas',
+      initialRoute: HomeScreen.routeName,
       routes: {
-        '/'           : (BuildContext context) => HomePage(),
-        'detalle'     : (BuildContext context) => PeliculaDetalle(),
+        HomeScreen.routeName: (_) => HomeScreen(),
+        DetailsScreen.routeName: (_) => DetailsScreen(),
       },
+      theme: ThemeData.light().copyWith(
+        appBarTheme: AppBarTheme(
+        color: Colors.indigo,
+      )),
     );
   }
 }
