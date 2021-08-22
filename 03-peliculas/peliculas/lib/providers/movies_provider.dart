@@ -40,8 +40,6 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> _lastQueryResult = [];
 
   MoviesProvider() {
-    print('MoviesProvidr inicializado');
-
     this.getOnDisplayMovies();
     this.getPopularMovies();
   }
