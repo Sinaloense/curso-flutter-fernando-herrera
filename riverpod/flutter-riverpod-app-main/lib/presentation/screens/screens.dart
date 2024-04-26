@@ -1,11 +1,10 @@
-export '01_provider/provider_screen.dart';
-export '02_provider_router/router_screen.dart';
-export '03_state_provider/state_provider_screen.dart';
-export '04_todo/todo_screen.dart';
-export '05_future_provider/future_provider_screen.dart';
-export '06_family_future_provider/future_provider_screen.dart';
-export '07_stream_provider/stream_provider_screen.dart';
-export '09_change_notifier/change_notifier_screen.dart';
-export '08_state_notifier/state_notifier_screen.dart';
-
-export 'home/home_screen.dart';
+export '01_provider/01_provider.dart';
+export '02_provider_router/02_provider_router.dart';
+export '03_state_provider/03_state_provider.dart';
+export '04_todo/04_todo.dart';
+export '05_future_provider/05_future_provider.dart';
+export '06_family_future_provider/06_family_future_provider.dart';
+export '07_stream_provider/07_stream_provider.dart';
+export '08_state_notifier/08_state_notifier.dart';
+export '09_change_notifier/09_change_notifier.dart';
+export 'home/home.dart';

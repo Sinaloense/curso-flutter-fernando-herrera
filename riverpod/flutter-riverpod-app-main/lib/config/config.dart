@@ -1,4 +1,3 @@
-export 'helpers/pokemon_information.dart';
-export 'helpers/random_generator.dart';
-export 'router/app_router.dart';
-export 'theme/app_theme.dart';
+export 'helpers/helpers.dart';
+export 'router/router.dart';
+export 'theme/theme.dart';
